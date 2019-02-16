@@ -1,0 +1,163 @@
+/*
+html {
+    overflow: hidden;
+    height: 100%;
+}
+*/
+
+body{
+/*    font-family: Didot;*/
+    font-family:Helvetica;
+    font-size: 20px;
+    
+    padding:0;
+    margin:0;
+    height: 100%;
+/*    overflow: hidden;*/
+    background-color: ghostwhite;
+    
+}
+
+
+/* Search Bar */
+
+
+.search-bar-box input[type=text] {
+ background-color: white;
+ position:absolute;
+ top: 20%;
+ left: 50%;
+ transform: translate(-40%, -50%);
+ display: inline-block;
+ width: 70%;
+ border-radius: 40px;
+ padding: 10px;
+ font-size: 30px;
+/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);*/
+    
+/*
+  position: absolute;
+  text-align:center;
+  display: inline-block;
+  padding: 6px;
+  margin-top: 8px;
+  width: 70%;
+  font-size: 30px;
+*/
+}
+
+/*
+.search-bar-box:hover > .search-bar-txt {
+ width: 240px;
+ padding: 0 6px;
+}
+
+.search-bar-box:hover > .search-bar-button {
+ background: white;
+ color: black;
+}
+
+*/
+
+.search-bar-button {
+ color: #e84118;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background: white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: lightcoral;
+ cursor: pointer;
+ float: right;
+ left: 50%;
+
+/* background-image: url("https://www.freeiconspng.com/uploads/search-icon-png-4.png") no-repeat 20px;*/
+
+}
+
+
+.search-bar-txt {
+ border: none;
+ background: none;
+ outline: none;
+ float: left;
+ padding: 0;
+ color: black;
+ font-size: 16px;
+ transition: 0.4s;
+ line-height: 40px;
+ width: 0px;
+ font-weight: bold;
+}
+
+
+/* The side navigation menu */
+.sidebar {
+/*overflow: hidden;*/
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+/*  overflow: hidden;*/
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+
+.sidebar a.branding{
+    
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: lightcoral;
+  width: auto;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: gainsboro;
+  color: white;
+/*
+  box-shadow: 0 1.5em 1.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+*/
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
