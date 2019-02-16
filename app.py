@@ -55,7 +55,7 @@ def regMain(user, password):#register helper
         c.execute(query, (user, password))
         db.commit()
         db.close()
-        return 1
+        return ""
     db.commit()
     db.close()
     return reg#return error message
@@ -81,58 +81,60 @@ def duplicate_user(user):#checks if username already exists
 
 def add_to_watchlist(user, item):
 	db = connect(f)
-    c = db.cursor()
-    try: #does table already exist?
-        c.execute("SELECT * FROM watchlist")
-    except: #if not, this is the first user!
-        c.execute("CREATE TABLE watchlist (user TEXT, item TEXT)")
-    db.commit()
-    db.close()
-    return watchlistMain(user, password)#register helper
+	c = db.cursor()
+	try: #does table already exist?
+		c.execute("SELECT * FROM watchlist")
+	except: #if not, this is the first user!
+		c.execute("CREATE TABLE watchlist (user TEXT, item TEXT)")
+	db.commit()
+	db.close()
+	return watchlistMain(user, item)#register helper
 
 def watchlistMain(user, item):
 	db = connect(f)
-    c = db.cursor()
-    if not in_watchlist(user, item): #if error message is blank then theres no problem, update database
-        query = ("INSERT INTO watchlist VALUES (?, ?)")
-        c.execute(query, (user, item))
-        db.commit()
-        db.close()
-        return 1
-    db.commit()
-    db.close()
-    return "Item already in watchlist!"#return error message
+	c = db.cursor()
+	if not in_watchlist(user, item): #if error message is blank then theres no problem, update database
+		query = ("INSERT INTO watchlist VALUES (?, ?)")
+		c.execute(query, (user, item))
+		db.commit()
+		db.close()
+		return ""
+	db.commit()
+	db.close()
+	return "Item already in watchlist!"#return error message
 
 def in_watchlist(user, item):
 	db = connect(f)
-    c = db.cursor()
-    query = ("SELECT * FROM watchlist WHERE user=?")
-    sel = c.execute(query, (user,))
-    for record in sel:
-        if record == item:
+	c = db.cursor()
+	query = ("SELECT item FROM watchlist WHERE user=?")
+	sel = c.execute(query, (user,))
+	for record in sel:
+		# print(record)
+		if record[0] == item:
+			db.close()
 			return True
-    db.commit()
-    db.close()
-    return False
+	db.commit()
+	db.close()
+	return False
 
-def get_watchlist(user, item):
+def get_watchlist(user):
 	db = connect(f)
-    c = db.cursor()
-    query = ("SELECT * FROM watchlist WHERE user=?")
-    sel = c.execute(query, (user,))
-    results = []
-    for record in sel:
-        results.append(record)
-    db.commit()
-    db.close()
-    return results
+	c = db.cursor()
+	query = ("SELECT * FROM watchlist WHERE user=?")
+	sel = c.execute(query, (user,))
+	results = []
+	for record in sel:
+		results.append(record)
+	db.commit()
+	db.close()
+	return results
 
 def remove_from_watchlist(user, item):
 	db = connect(f)
-    c = db.cursor()
-    data = c.execute("DELETE FROM watchlist WHERE user=? AND item=?",(user,item,))
-    db.commit()
-    db.close()
+	c = db.cursor()
+	data = c.execute("DELETE FROM watchlist WHERE user=? AND item=?",(user,item,))
+	db.commit()
+	db.close()
 
 
 sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
@@ -156,3 +158,14 @@ print("_______Product Search List_____")
 # print(results)
 for elem in results['results']:
     print("name:", elem['name'], "sem3_id:", elem['sem3_id'])
+
+print("1:",register("bob", "thebuilder"))
+print("2:",login("bob", "thebuilder"))
+print("3:",login("what", "haha"))
+print("4:",register("what", "haha"))
+print("5:",register("bob", "thebuilder"))
+print("6:",add_to_watchlist("bob", "iPhone"))
+print("7:",add_to_watchlist("bob", "PC"))
+print("8:",get_watchlist("bob"))
+print("9:",add_to_watchlist("bob", "iPhone"))
+print("end:",remove_from_watchlist("bob", "iPhone"))
