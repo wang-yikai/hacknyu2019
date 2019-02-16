@@ -6,55 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
      table{
-       margin-left: 250px;
+       margin-left: 200px;
      }
+
      th{
+       width: 1px;
        text-align: right;
+     }
+     td{
+       width: 1px;
+     }
+     #tab{
+       margin-left:200px;
+       width: 1000px;
      }
      h1{
        text-align: center;
      }
+
      img{
        display: block;
        margin-left: auto;
        margin-right: auto;
      }
+     #ad1{
+       float: right;
+       width: 350px;
+       height: 200px;
+       position: absolute;
+       left: 1150px;
+       top: 500px;
+     }
+     .sidenav {
+       margin-top: 52px;
+       color: black;
+       height: 100%;
+       width: 300px;
+       position: absolute;
+       z-index: 1;
+       top: 0;
+       left: 0;
+       background-color: #FF4500;
+       overflow-x: hidden;
+       padding-top: 100px;
+    }
+    .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+        display: block;
+    }
+    .sidenav a:hover {
+       color: #f1f1f1;
+    }
+    #head{
+      position: relative;
+      margin-left: 0;
+    }
+    #loger{
+      margin-left: 1270px;
+    }
     </style>
     <!-- Bootstrap CSS -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
     <title>Copiat</title>
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" id="head">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Copiad</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a id ="loger" href="login.html">Log in</a></li>
     </ul>
   </div>
 </nav>
+<div class="sidenav" id="side">
+</div>
+   <div class="sidenav">
+      <h1>Wishlist</h1>
+      <a href="item.html">1. Airpods</a>
+      <a href="item.html">2. Yeezys</a>
+      <a href="item.html">3. Disney Ticket</a>
+      <a href="item.html">4. Supreme Hoodie</a>
+      <a href="item.html">5. iPhone</a>
+      <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+   </div>
 
     <h1>Airpods</h1>
 
-
+  <div id = "tab">
     <table class="table">
       <thead>
          <tr>
-            <th scope="col"></th>
-            <th scope="col">Time</th>
-            <th scope="col">Price drop</th>
-            <th scope="col">Store</th>
-            <th scope="col">Drop Chance</th>
+            <th class="col-sm-0.1"></th>
+            <th class="col-sm-0.1">Time</th>
+            <th class="col-sm-0.1">Price drop</th>
+            <th class="col-sm-0.1">Store</th>
+            <th class="col-sm-0.1">Drop Chance</th>
          </tr>
       </thead>
       <tr>
@@ -93,6 +149,8 @@
         <td>5%</td>
       </tr>
     </table>
-    <img src="img/airpod.jpg" alt="airpods">
+  </div>
+    <img src="img/airpod.jpg" alt= "airpods">
+    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">\
   </body>
 </html>
