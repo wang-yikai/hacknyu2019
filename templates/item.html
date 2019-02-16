@@ -24,7 +24,7 @@
        text-align: center;
      }
 
-     img{
+     #img1{
        display: block;
        margin-left: auto;
        margin-right: auto;
@@ -46,7 +46,7 @@
        z-index: 1;
        top: 0;
        left: 0;
-       background-color: #FF4500;
+       background-color: lightcoral;
        overflow-x: hidden;
        padding-top: 100px;
     }
@@ -58,14 +58,25 @@
         display: block;
     }
     .sidenav a:hover {
-       color: #f1f1f1;
+       color: black;
     }
     #head{
       position: relative;
       margin-left: 0;
+      text-align: center;
     }
-    #loger{
-      margin-left: 1270px;
+    .topnav-right, #loger {
+       float: right;
+       text-align: right;
+    }
+    #hov{
+      width: 30px;
+      height: 30px;
+      position: relative;
+      float:right;
+    }
+    li{
+      margin: 0 0 0 0;
     }
     </style>
     <!-- Bootstrap CSS -->
@@ -77,26 +88,33 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse" id="head">
+  <nav class="navbar navbar-inverse" id="head">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Copiad</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="index.html">Home</a></li>
-      <li><a id ="loger" href="home.html">Log in</a></li>
     </ul>
+      <div class="topnav-right">
+        <ul class="nava navbar-nav">
+               <li><a id ="loger" href="index.html">Log in</a></li>
+        </ul>
+      </div>
   </div>
 </nav>
 <div class="sidenav" id="side">
 </div>
    <div class="sidenav">
-      <h1>Wishlist</h1>
-      <a href="item.html">1. Airpods</a>
-      <a href="item.html">2. Yeezys</a>
-      <a href="item.html">3. Disney Ticket</a>
-      <a href="item.html">4. Supreme Hoodie</a>
-      <a href="item.html">5. iPhone</a>
+
+     <script>
+     </script>
+      <h1>Watchlist</h1>
+      <a href="item.html">1. Airpods<img id="hov" src="img/delete.jpg" alt="Delete" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');"></a>
+      <a href="item.html">2. Yeezys<img id="hov" src="img/delete.jpg" alt="Delete" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');"></a>
+      <a href="item.html">3. Disney Ticket<img id="hov" src="img/delete.jpg" alt="Delete" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');"></a>
+      <a href="item.html">4. Supreme Hoodie<img id="hov" src="img/delete.jpg" alt="Delete" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');"></a>
+      <a href="item.html">5. iPhone<img id="hov" src="img/delete.jpg" alt="Delete" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');"></a>
       <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
    </div>
 
@@ -150,7 +168,7 @@
       </tr>
     </table>
   </div>
-    <img src="img/airpod.jpg" alt= "airpods">
-    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">\
+    <img src="img/airpod.jpg" alt= "airpods" id ="img1">
+    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">
   </body>
 </html>
