@@ -108,12 +108,12 @@ def in_watchlist(user, item):
     c = db.cursor()
     query = ("SELECT * FROM watchlist WHERE user=?")
     sel = c.execute(query, (user,))
-    retVal = False
     for record in sel:
-        retVal = True
+        if record == item:
+			return True
     db.commit()
     db.close()
-    return retVal
+    return False
 
 def get_watchlist(user, item):
 	db = connect(f)
