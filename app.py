@@ -61,13 +61,13 @@ def regMain(user, password):#register helper
     return reg#return error message
 
 def regReqs(user, password):      #error message generator
-    if duplicate(user):          #checks if username already exists
+    if duplicate_user(user):          #checks if username already exists
         return "Username already exists"
     if " " in user:
         return "Spaces not allowed in username"
     return ""
 
-def duplicate(user):#checks if username already exists
+def duplicate_user(user):#checks if username already exists
     db = connect(f)
     c = db.cursor()
     query = ("SELECT * FROM users WHERE user=?")
@@ -79,11 +79,60 @@ def duplicate(user):#checks if username already exists
     db.close()
     return retVal
 
-def add_to_watchlist(user, id):
-	pass
+def add_to_watchlist(user, item):
+	db = connect(f)
+    c = db.cursor()
+    try: #does table already exist?
+        c.execute("SELECT * FROM watchlist")
+    except: #if not, this is the first user!
+        c.execute("CREATE TABLE watchlist (user TEXT, item TEXT)")
+    db.commit()
+    db.close()
+    return watchlistMain(user, password)#register helper
 
-def remove_from_watchlist(user, id):
-	pass
+def watchlistMain(user, item):
+	db = connect(f)
+    c = db.cursor()
+    if not in_watchlist(user, item): #if error message is blank then theres no problem, update database
+        query = ("INSERT INTO watchlist VALUES (?, ?)")
+        c.execute(query, (user, item))
+        db.commit()
+        db.close()
+        return 1
+    db.commit()
+    db.close()
+    return "Item already in watchlist!"#return error message
+
+def in_watchlist(user, item):
+	db = connect(f)
+    c = db.cursor()
+    query = ("SELECT * FROM watchlist WHERE user=?")
+    sel = c.execute(query, (user,))
+    retVal = False
+    for record in sel:
+        retVal = True
+    db.commit()
+    db.close()
+    return retVal
+
+def get_watchlist(user, item):
+	db = connect(f)
+    c = db.cursor()
+    query = ("SELECT * FROM watchlist WHERE user=?")
+    sel = c.execute(query, (user,))
+    results = []
+    for record in sel:
+        results.append(record)
+    db.commit()
+    db.close()
+    return results
+
+def remove_from_watchlist(user, item):
+	db = connect(f)
+    c = db.cursor()
+    data = c.execute("DELETE FROM watchlist WHERE user=? AND item=?",(user,item,))
+    db.commit()
+    db.close()
 
 
 sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
