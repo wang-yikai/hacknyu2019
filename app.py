@@ -31,4 +31,6 @@ sem3.products_field("search", "iPhone")
 results = sem3.get_products()
 
 print("_______Product Search List_____")
-print(results)
+# print(results)
+for elem in results['results']:
+    print("name:", elem['name'], "sem3_id:", elem['sem3_id'])
