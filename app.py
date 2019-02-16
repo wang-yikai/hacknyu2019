@@ -79,6 +79,12 @@ def duplicate(user):#checks if username already exists
     db.close()
     return retVal
 
+def add_to_watchlist(user, id):
+	pass
+
+def remove_from_watchlist(user, id):
+	pass
+
 
 sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
 
