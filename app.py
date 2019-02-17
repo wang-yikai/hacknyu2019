@@ -11,6 +11,7 @@ sem3 = Products(
 	api_secret = "YmVkZGQ1YWY1NTQxOThlZTE5Y2FlMDU1Nzc2MTlmMDQ"
 )
 f = "data/database.db"
+app = Flask(__name__)
 
 def get_median(l):
 	l = sorted(l)
@@ -31,7 +32,7 @@ def to_datetime(d):
             int(d)
         ).strftime('%m/%d %H:%M:%S')
 
-def login(user, password):
+def logon(user, password):
     db = connect(f)
     c = db.cursor()
     query = ("SELECT * FROM users WHERE user=?")
@@ -264,14 +265,21 @@ def get_prob_table(trend):
 
 @app.route('/')
 def homepage():
-    return render_template("register.html")
+	if 'username' in session:
+		return redirect(url_for('logged_on'))
+	error = request.args.get('error')
+	return render_template("register.html", error = error)
 
 @app.route('/login/')
 def login():
-	return render_template("login.html")
+	error = request.args.get('error')
+	return render_template("login.html", error = error)
 
 @app.route("/home/")
 def logged_on():
+	username = reguest.args.get('username')
+	if username:
+		session['username'] = username
 	if 'username' in session:
 		return render_template("index.html")
 	return redirect(url_for('homepage'))
@@ -281,6 +289,30 @@ def logout():
 	if 'username' in session:
 		session.pop('username')
 	return redirect(url_for('homepage'))
+
+@app.route("/authenticate/", methods=['POST'])
+def authenticate():
+	password = request.form["password"]
+	username = request.form["username"]
+
+	text = logon(username, password)
+	if len(text) < 1:
+		return redirect(url_for('logged_on',username=username))
+	return redirect(url_for('login',error=text))
+
+@app.route('/register/', methods=['POST'])
+def register():
+	password = request.form["password"]
+	username = request.form["username"]
+	repeat = request.form["repeat"]#login vs. register
+
+	if password != repeat:
+		text = "Passwords do not match!"
+	else:
+		text = len(register(username, password))
+	if len(text) < 1:
+		return redirect(url_for('logged_on',username=username))
+	return redirect(url_for('homepage',error=text))
 
 if __name__ == '__main__':
     app.debug = True

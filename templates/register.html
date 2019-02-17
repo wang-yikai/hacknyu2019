@@ -6,24 +6,24 @@
     <head>
         <meta charset="UTF-8">
         <title>Cop It</title>
-                
+
         <meta name = "viewport" content = "width = device - width">
-        <meta name = "description" content = "Cop It Website">  
+        <meta name = "description" content = "Cop It Website">
         <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
-    
+
 
     <body>
 
-        
+
         <!-- The sidebar -->
 <!--        <div class="sidebar">-->
 <!--          <section id = "NameDisplay" align = "center" style = "font-size: 1000", font color="red"><h1>Cop It</h1></section>-->
 <!--
         <img src ="Cop%20It%20Logo.png" width = 200 height = 100 alt = "CPP Logo" draggable="false" ondragstart="return false;" onContextMenu="return false;">
-            
+
           <a class="active" href="index.html" style = "font-family: Helvetica">Search</a>
           <a href="#watchlist.html" style = "font-family: Helvetica">Watch List</a>
           <a href="#statistics.html" style = "font-family: Helvetica">Statistics</a>
@@ -37,20 +37,16 @@
             img {vertical-align: middle;}
         </script>
 
-        
-        
+
+
         <!-- Page content -->
-        <button id = "showsignin" type="submit" class="signinbtn" style="float:right; margin-right:100px;">Sign In</button>
-        
-        <p style= "float:right; margin-right: 20px;"><i>Start coping those goods <u>NOW</u>! →</i> </p>
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <div class="center hideform">
             <button id="close" style= "float:right;">X</button>
-            
-            <form action='/home/'>
+
+            <form action='/'>
                 <div class="login-popup">
-                    
+
                     <label for="uname" style="color:white;"><b>Username</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -62,16 +58,16 @@
                     <label>
                         <input type="checkbox" style="font-size:8px;" checked="checked" name="remember" ><a style=" back-ground-color: ghostwhite; font-size:12px; color:white;">Remember me</a>
                     </label>
-                    
+
                     <span class="psw"><a href="#" style="font-size:12px; color:white;">I forgot my password</a></span>
                     <br>
                     <br>
-  
+
                 </div>
-                
+
             </form>
         </div>
-        
+
         <script>
                 $('#showsignin').on('click', function () {
                 $('.center').show();
@@ -81,38 +77,38 @@
                 $('.center').hide();
 //                $('#signinbtn').show();
             })
-            
+
         </script>
-        
+
             <div class = "front-page-logo">
-                <img src ="img/Cop%20It%20Logo.png" width = 300 height = 150  draggable="false" ondragstart="return false;" onContextMenu="return false;">   
-            </div> 
+                <img src ="{{ url_for('static', filename='img/Cop It Logo.png') }}" width = 300 height = 150  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+            </div>
 
         <div class="front-page-content">
                 <div class = "price-header">
-                    <h2>Top Price Drops of the Week!</h2>               
+                    <h2>Top Price Drops of the Week!</h2>
                 </div>
                 <div class = "price-tag"></div>
-            
+
                 <div class="slideshow-container">
                     <div class="slide-picture">
-                      <div class="numbertext">1 / 3</div> 
+                      <div class="numbertext">1 / 3</div>
                       <div class ="price-text"> 649.99 </div>
-                      <img src="img/stockphoto1.jpg" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
+                      <img src="{{ url_for('static', filename='img/stockphoto1.jpg') }}" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
                       <div class="text">iPhone 6S</div>
                     </div>
 
                     <div class="slide-picture">
                       <div class="numbertext">2 / 3</div>
                       <div class ="price-text"> 759.99 </div>
-                      <img src="img/stockphoto2.jpg" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
+                      <img src="{{ url_for('static', filename='img/stockphoto2.jpg') }}" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
                       <div class="text">Canon EOS 5D Mark II</div>
                     </div>
 
                     <div class="slide-picture">
                       <div class="numbertext">3 / 3</div>
                       <div class ="price-text"> 928.00 </div>
-                      <img src="img/stockphoto3.jpg" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
+                      <img src="{{ url_for('static', filename='img/stockphoto3.jpg') }}" width = 500 height = 400 draggable="false" ondragstart="return false;" onContextMenu="return false">
                       <div class="text">Surface Pro (5th gen)</div>
                     </div>
 
@@ -120,40 +116,31 @@
                     <br>
 
                     <div style="text-align:center">
-                      <span class="dot"></span> 
-                      <span class="dot"></span> 
-                      <span class="dot"></span> 
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
                     </div>
                     <br>
 
 
-            
-            
-            
-                <form action='/home/'>
+                    {% if error %}
+                    {{ error }}
+                    {% endif %}
+
+                <form action='/register/' method = "post" style='margin-top: 8%;'>
                     <div class="register-container">
-                        
+
                         <h1>Register</h1>
                         <hr>
 
-                        <label for="first-name"><b>First Name</b></label>
-                        <input type="text" placeholder="First Name" name="first" required>
-
-                        <label for="last-name"><b>Last Name</b></label>
-                        <input type="text" placeholder="Last Name" name="last" required>
-                        
-                        <label for="Username"><b>Username</b></label>
-                        <input type="text" placeholder="Last Name" name="last" required>
-
-
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
+                        <label for="username"><b>Username</b></label>
+                        <input type="text" placeholder="Last Name" name="username" required>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="password" required>
 
                         <label for="psw-repeat"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        <input type="password" placeholder="Repeat Password" name="repeat" required>
                         <hr>
 
                         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
@@ -164,7 +151,7 @@
                 </form>
         </div>
         <br><br>
-        
+
         <script>
             $(function() {
                 $(".button").click(function() {
@@ -198,12 +185,11 @@
                                 <a href = "register.html"> "Don't have an account? Register Now!"</a>
                                 </div>
 
-                            </div>        
+                            </div>
 -->
-        <p style = "float:right; margin-right: 10px; font-size: 12px;" ><i>Sign Up to see more →</i></p>  
-            
-            
-            
+
+
+
         <script>
             var slideIndex = 0;
             showSlides();
@@ -213,14 +199,14 @@
               var slides = document.getElementsByClassName("slide-picture");
               var dots = document.getElementsByClassName("dot");
               for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+                slides[i].style.display = "none";
               }
               slideIndex++;
-              if (slideIndex > slides.length) {slideIndex = 1}    
+              if (slideIndex > slides.length) {slideIndex = 1}
               for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
               }
-              slides[slideIndex-1].style.display = "block";  
+              slides[slideIndex-1].style.display = "block";
               dots[slideIndex-1].className += " active";
               setTimeout(showSlides, 2000); // Change image every 2 seconds
             }
@@ -230,7 +216,7 @@
     </body>
 
     <foot>
-        <div class = "copyright">
+        <div class = "copyright" style='margin-top: 15%;'>
             <p>Copyright &copy; 2019 Cop It</p>
         </div>
     </foot>
