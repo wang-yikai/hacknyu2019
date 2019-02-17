@@ -286,6 +286,8 @@ def logged_on():
 	if username:
 		session['username'] = username
 	if 'username' in session:
+		# results = request.args.get("results")
+		# print(results)
 		return render_template("index.html", username = session['username'], watchlist = get_watchlist(session['username']))
 	return redirect(url_for('homepage'))
 
@@ -324,8 +326,8 @@ def search():
 	product = request.form['product']
 	sem3.products_field("search", product)
 	results = sem3.get_products()['results']
-	print(results)
-	return redirect(url_for('logged_on',results=results))
+	# print(results)
+	return render_template("index.html", username = session['username'], watchlist = get_watchlist(session['username']), results = results)
 
 @app.route('/<item>/')
 def info(item):
