@@ -138,12 +138,15 @@ def in_watchlist(user, item):
 def get_watchlist(user):
 	db = connect(f)
 	c = db.cursor()
-	query = ("SELECT * FROM watchlist WHERE user=?")
-	sel = c.execute(query, (user,))
 	results = []
-	for record in sel:
-		results.append(record)
-	db.commit()
+	try:
+		query = ("SELECT item FROM watchlist WHERE user=?")
+		sel = c.execute(query, (user,))
+		for record in sel:
+			results.append(record)
+	except:
+		c.execute("CREATE TABLE watchlist (user TEXT, item TEXT)")
+		db.commit()
 	db.close()
 	return results
 
@@ -279,7 +282,7 @@ def login():
 
 @app.route("/home/")
 def logged_on():
-	username = reguest.args.get('username')
+	username = request.args.get('username')
 	if username:
 		session['username'] = username
 	if 'username' in session:
