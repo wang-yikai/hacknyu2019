@@ -12,15 +12,6 @@ sem3 = Products(
 )
 f = "data/database.db"
 
-
-
-
-app = Flask(__name__)
-
-@app.route('/')
-def homepage():
-    return render_template("index.html")
-
 def get_median(l):
 	l = sorted(l)
 	if len(l) % 2 == 1:
@@ -230,18 +221,18 @@ def get_prob_table(trend):
 			price = trend[i][-1]
 	return probs
 
-sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
-
-offers = sem3.get_offers()
-price_history = []
-
-print("_______Price History______")
-# print(offers['results'])
-for elem in offers['results']:
-    price_history.append([ int(elem['firstrecorded_at']), int(elem['lastrecorded_at']), float(elem['price']) ])
-
-price_history = sorted(price_history)
-print(price_history)
+# sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
+#
+# offers = sem3.get_offers()
+# price_history = []
+#
+# print("_______Price History______")
+# # print(offers['results'])
+# for elem in offers['results']:
+#     price_history.append([ int(elem['firstrecorded_at']), int(elem['lastrecorded_at']), float(elem['price']) ])
+#
+# price_history = sorted(price_history)
+# print(price_history)
 
 # sem3.products_field("search", "iPhone")
 #
@@ -252,12 +243,12 @@ print(price_history)
 # for elem in results['results']:
 #     print("name:", elem['name'], "sem3_id:", elem['sem3_id'])
 
-print("_____TREND____")
-trends = trend_median(price_history)
-print(trends)
-
-print("____PROBS____")
-print(get_prob_table(trends))
+# print("_____TREND____")
+# trends = trend_median(price_history)
+# print(trends)
+#
+# print("____PROBS____")
+# print(get_prob_table(trends))
 
 # print("1:",register("bob", "thebuilder"))
 # print("2:",login("bob", "thebuilder"))
@@ -270,3 +261,28 @@ print(get_prob_table(trends))
 # print("9:",add_to_watchlist("bob", "iPhone"))
 # print("end:",remove_from_watchlist("bob", "iPhone"))
 # print("10:",get_watchlist("bob"))
+
+@app.route('/')
+def homepage():
+    return render_template("register.html")
+
+@app.route('/login/')
+def login():
+	return render_template("login.html")
+
+@app.route("/home/")
+def logged_on():
+	if 'username' in session:
+		return render_template("index.html")
+	return redirect(url_for('homepage'))
+
+@app.route("/logout/")
+def logout():
+	if 'username' in session:
+		session.pop('username')
+	return redirect(url_for('homepage'))
+
+if __name__ == '__main__':
+    app.debug = True
+    app.secret_key = '\x43\xd2\x34\x92\x5b\x4a\x80\xfc\xc6\xb0\x0e\x45\xdd\x51\x36\xc0\xd2\x3a\x85\x42\x57\xbb\x61\xf2\x7b\xb6\xfc\x17\x3b\x1a\xda\x5b\x6d\x7d\x0a\xff\xd3\x6f\xfa\x7c\x1b\xa8\x0f\x7f\x53\x18\x8d\x91\x16\x81'
+    app.run()
