@@ -261,7 +261,7 @@ def get_prob_table(trend):
 # print("9:",add_to_watchlist("bob", "iPhone"))
 # print("end:",remove_from_watchlist("bob", "iPhone"))
 # print("10:",get_watchlist("bob"))
-
+app = Flask(__name__)
 @app.route('/')
 def homepage():
     return render_template("register.html")
