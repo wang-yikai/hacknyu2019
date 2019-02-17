@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -16,6 +16,7 @@
      td{
        width: 1px;
      }
+
      #tab{
        margin-left:200px;
        width: 1000px;
@@ -28,6 +29,7 @@
        display: block;
        margin-left: auto;
        margin-right: auto;
+      border-top: 1px solid #b0b7c1;
      }
      #ad1{
        float: right;
@@ -46,19 +48,34 @@
        z-index: 1;
        top: 0;
        left: 0;
-       background-color: lightcoral;
+       background-color: ghostwhite;
        overflow-x: hidden;
        padding-top: 100px;
+         border: 1px solid;
+  box-shadow: 2px #b0b7c1;
     }
     .sidenav a {
+
+
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
     color: black;
         display: block;
     }
+    .sidenav h1 {
+      position: relative;
+      left:5%;
+      top: -5%;
+      text-align: left;
+    }
     .sidenav a:hover {
-       color: black;
+            border-left: 5px solid #b0b7c1;
+                  border-bottom: 1px solid #b0b7c1;
+       background-color: lightcoral;
+       opacity:0.5;
+       color: white;
+       text-decoration: none;
     }
     #head{
       position: relative;
@@ -68,6 +85,9 @@
     .topnav-right, #loger {
        float: right;
        text-align: right;
+    }
+    .container-fluid{
+
     }
     #hov{
       width: 30px;
@@ -123,7 +143,7 @@
   <div id = "tab">
     <table class="table">
       <thead>
-         <tr>
+         <tr style = "background-color: lightgray">
             <th class="col-sm-0.1"></th>
             <th class="col-sm-0.1">Time</th>
             <th class="col-sm-0.1">Price drop</th>
