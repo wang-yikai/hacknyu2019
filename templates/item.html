@@ -85,11 +85,9 @@
     }
     #chart{
       display: block;
-      margin-left: auto;
-      margin-right: auto;
-      position:absolute;
-      left: 10000px;
-      top: 500px;
+      margin-left: 450px;
+      margin-top: auto;
+      position: relative;
     }
     </style>
     <!-- Bootstrap CSS -->
@@ -200,12 +198,12 @@
     <!--<img src="img/airpod.jpg" alt= "airpods" id ="img1">-->
     <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">
   <div id="chart"></div>
-    <script>
+  <script>
     var chart = c3.generate({
        bindto: '#chart',
         size: {
-        height: 240,
-        width: 480
+        height: 350,
+        width: 600,
     },
        data: {
            columns: [
@@ -214,5 +212,5 @@
            ]
       }
     });
-    </script>
+  </script>
 </html>
