@@ -35,7 +35,11 @@ def to_datetime(d):
 def logon(user, password):
     db = connect(f)
     c = db.cursor()
-    query = ("SELECT * FROM users WHERE user=?")
+	try:
+    	query = ("SELECT * FROM users WHERE user=?")
+	except:
+		db.close()
+		return "Users non-existent!"
     sel = c.execute(query,(user,));
 
     #records with this username
