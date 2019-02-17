@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 def get_median(l):
 	l = sorted(l)
+	print(l)
 	if len(l) % 2 == 1:
 		return l[len(l)//2]
 	return (l[len(l)//2] + l[len(l)//2 - 1])/2
@@ -143,7 +144,7 @@ def get_watchlist(user):
 		query = ("SELECT item FROM watchlist WHERE user=?")
 		sel = c.execute(query, (user,))
 		for record in sel:
-			results.append(record)
+			results.append(record[0])
 	except:
 		c.execute("CREATE TABLE watchlist (user TEXT, item TEXT)")
 		db.commit()
@@ -201,7 +202,8 @@ def trend_median(price_history):
 		curr_prices.remove(curr_intervals[0][-1])
 		curr_intervals.pop(0)
 
-	trend.append([ last_start, curr_intervals[0][1], get_median(curr_prices) ])
+	if len(curr_prices) > 0:
+		trend.append([ last_start, curr_intervals[0][1], get_median(curr_prices) ])
 	return sorted(trend)
 
 def get_prob_table(trend):
@@ -346,7 +348,7 @@ def info(item):
 	trends = trend_median(price_history)
 
 	# print(price_history)
-	return render_template("item.html", prob = get_prob_table(trends), watchlist = get_watchlist(session['username']), product = item)
+	return render_template("item.html", prob = get_prob_table(trends), product = item)
 
 @app.route('/delete/<item>/')
 def delete(item):

@@ -39,7 +39,7 @@
           <button class="collapsible" style = "font-family: Helvetica; font-size:20px;">Watch List</button>
             <div class="collapse-content">
               {% for item in watchlist %}
-              <a href="/{{ item }}/">{{ item }}<a href="/delete/{{ item }}/"><button type="button" class="btn btn-danger" style="float: right; width: 25px; height: 25px;">Delete</button></a></a>
+              <a href="/{{ item }}/">{{ item }}<a href="/delete/{{ item }}/"><button type="button" class="btn btn-danger" style="clear: right; float: right;">Delete</button></a></a>
               {% endfor %}
             </div>
           <a style = "font-family: Helvetica" a href="/logout/">Log Out</a>
@@ -86,16 +86,21 @@
 
              </div>
 
+             <div class="container-fluid" style="margin-top: 20%;">
              {% for item in results %}
-             <div class="well"><h3>{{ item['name'] }}</h3>
+             <div class="well">
+               <br>
+               <h4>{{ item['name'] }}</h4>
                <img src="{{ item['images'][0] }}" style="clear: left; float: left; width: 10%; height: 10%;">
                ${{ item['price'] }}
                <br>
                {{ item['brand'] }}
                <br>
-               <a href="/add/{{ item['name'] }}/"<button type="button" class="btn" style="float: right; width: 25px; height: 25px;">Add</button></a>
+               <a href="/add/{{ item['name'] }}/"<button type="button" class="btn" style="float: right;">Add</button></a>
              </div>
+             <br>
              {% endfor %}
+           </div>
         </div>
 
 
