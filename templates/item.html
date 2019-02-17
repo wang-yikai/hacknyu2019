@@ -106,8 +106,9 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 700px;
-      height: 400px;
+      position:absolute;
+      left: 10000px;
+      top: 500px;
     }
     </style>
     <!-- Bootstrap CSS -->
@@ -157,11 +158,11 @@
      }
      </script>
       <h1>Watchlist</h1>
-      <a href="item.html">1. Airpods<img id="hov" src="img/delete.jpg" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">2. Yeezys<img id="hov1" src="img/delete.jpg" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">3. Disney Ticket<img id="hov2" src="img/delete.jpg" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">4. Supreme Hoodie<img id="hov3" src="img/delete.jpg" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">5. iPhone<img id="hov4" src="img/delete.jpg" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item.html">1. Airpods <img id="hov" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item.html">2. Yeezys<img id="hov1" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item.html">3. Disney Tickets<img id="hov2" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item.html">4. Supreme Hoodie<img id="hov3" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item.html">5. iPhone<img id="hov4" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
       <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
    </div>
 
@@ -221,6 +222,10 @@
     <script>
     var chart = c3.generate({
        bindto: '#chart',
+        size: {
+        height: 240,
+        width: 480
+    },
        data: {
            columns: [
              ['data1', 30, 45, 50, 45, 53, 40, 42, 45, 64, 25, 20, 40],
