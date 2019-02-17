@@ -7,7 +7,7 @@
         <title>Cop It</title>
 
         <meta name = "viewport" content = "width = device - width">
-        <meta name = "description" content = "Cop It Website">  
+        <meta name = "description" content = "Cop It Website">
         <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
 
         <!--for search bar icon -->
@@ -29,30 +29,29 @@
           <a href="#log out.html" style = "font-family: Helvetica">Log Out</a>
         </div>
 -->
-        <img src ="img/Cop%20It%20Logo.png" width = 300 height = 150  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+        <img src ="{{ url_for('static', filename='img/Cop It Logo.png') }}" width = 300 height = 150  draggable="false" ondragstart="return false;" onContextMenu="return false;">
 
         <!-- Page content -->
 <!--        <div class="content">-->
-                <form action='/home/'>
+                <form action='/authenticate/' method="post">
 <!--
                   <div class="imgcontainer">
                     <img src="img_avatar2.png" alt="Avatar" class="avatar">
                   </div>
 -->
+{% if error %}
+{{ error }}
+{% endif %}
 
                   <div class="login-container">
                     <h1>Start coping those goods NOW!</h1><br>
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button class = "registerbtn" type="submit">Login</button>
-                    <label>
-                      <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                       <span class="psw"><a href="#">I forgot my password</a></span><br><br>
                       <a href = "/">Don't have an account? Register Now!</a>
                   </div>
 
