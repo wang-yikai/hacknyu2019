@@ -196,7 +196,7 @@ def trend_median(price_history):
 
 		# |-----------|
 		# 	|------|
-	while len(curr_intervals) > 1:
+	while len(curr_intervals) > 1 and len(curr_prices) > 0:
 		trend.append([last_start, curr_intervals[1][1], get_median(curr_prices)])
 		last_start = curr_intervals[1][1]
 		curr_prices.remove(curr_intervals[0][-1])
