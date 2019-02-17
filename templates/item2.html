@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+     table{
+       margin-left: 200px;
+     }
+     a{
+       font-family: "Times New Roman", Times, serif;
+     }
+     th{
+       width: 1px;
+       text-align: right;
+     }
+     td{
+       width: 1px;
+     }
+
+     #tab{
+       margin-left:200px;
+       width: 1000px;
+     }
+     h1{
+       position: relative;
+       text-align: center;
+     }
+
+     #img1{
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+     }
+     #ad1{
+       float: right;
+       width: 350px;
+       height: 200px;
+       position: absolute;
+       left: 1150px;
+       top: 500px;
+     }
+     .sidenav {
+       margin-top: 52px;
+       color: black;
+       height: 100%;
+       width: 300px;
+       position: absolute;
+       z-index: 1;
+       top: 0;
+       left: 0;
+       background-color: lightcoral;
+       overflow-x: hidden;
+       padding-top: 100px;
+    }
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+    }
+    .sidenav a:hover {
+        background-color: #FF6347;
+        opacity:0.5;
+        color: black;
+        text-decoration: none;
+    }
+    #head{
+      position: relative;
+      margin-left: 0;
+      text-align: center;
+    }
+    .topnav-right, #loger {
+       float: right;
+       text-align: right;
+    }
+    #hov, #hov1 , #hov2, #hov3, #hov4{
+      width: 30px;
+      height: 30px;
+      position: relative;
+      float:right;
+    }
+    li{
+      margin: 0 0 0 0;
+      font-size: 20px;
+    }
+    #chart{
+      display: block;
+      margin-left: 450px;
+      margin-top: auto;
+      position: relative;
+    }
+    </style>
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Load c3.css -->
+<link href="c3f/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="c3f/d3.min.js" charset="utf-8"></script>
+<script src="c3f/c3.min.js"></script>
+    <title>Copiat</title>
+    <script>
+
+    </script>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-inverse" id="head">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Copiad</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Home</a></li>
+    </ul>
+      <div class="topnav-right">
+        <ul class="nava navbar-nav">
+               <li><a id ="loger" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');">Log out</a></li>
+        </ul>
+      </div>
+  </div>
+</nav>
+<div class="sidenav" id="side">
+</div>
+   <div class="sidenav">
+
+     <script>
+     function check(question){
+       if(confirm(question)){
+
+       }
+       else{
+       }
+     }
+     </script>
+      <h1>𝒲𝒶𝓉𝒸𝒽𝓁𝒾𝓈𝓉</h1>
+      <a href="item1.html">1. Airpods <img id="hov" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item2.html">2. Air Jordan<img id="hov1" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item3.html">3. Netflix<img id="hov2" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item4.html">4. Google Home Mini<img id="hov3" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <a href="item5.html">5. Gucci Bag<img id="hov4" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
+      <br>
+      <br>
+      <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+   </div>
+
+    <h1>Air Jordan</h1>
+
+  <div id = "tab">
+    <table class="table">
+      <thead>
+         <tr style = "background-color: lightgray">
+            <th class="col-sm-0.1"></th>
+            <th class="col-sm-0.1">Time</th>
+            <th class="col-sm-0.1">Price drop</th>
+            <th class="col-sm-0.1">Store</th>
+            <th class="col-sm-0.1">Drop Chance</th>
+         </tr>
+      </thead>
+      <tr>
+        <th scope="row"> 1.</th>
+        <td>June</td>
+        <td>-10%</td>
+        <td>Best Buy</td>
+        <td>36%</td>
+      </tr>
+      <tr>
+        <th scope="row"> 2.</th>
+        <td>July</td>
+        <td>-30%</td>
+        <td>Costco</td>
+        <td>34%</td>
+      </tr>
+      <tr>
+        <th scope="row"> 3.</th>
+        <td>October</td>
+        <td>-35%</td>
+        <td>Walmart</td>
+        <td>25%</td>
+      </tr>
+      <tr>
+        <th scope="row"> 4.</th>
+        <td>April</td>
+        <td>-50%</td>
+        <td>Aliexpress</td>
+        <td>15%</td>
+      </tr>
+      <tr>
+        <th scope="row"> 5.</th>
+        <td>December</td>
+        <td>-70%</td>
+        <td>Ebay</td>
+        <td>4%</td>
+      </tr>
+    </table>
+  </div>
+    <!--<img src="img/airpod.jpg" alt= "airpods" id ="img1">-->
+    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">
+  <div id="chart"></div>
+  <script>
+    var chart = c3.generate({
+       bindto: '#chart',
+        size: {
+           height: 350,
+           width: 600,
+        },
+        data: {
+           columns: [
+             ['2018', 350, 250, 350, 450, 530, 400, 400, 460, 400, 350, 450, 340, 450],
+             ['2019', 400, 200, 360, 355]
+           ]
+        },
+        axis: {
+          y:{
+            show: true,
+            label: {
+              text: 'Price',
+              position: 'outer-middle'
+            }
+          },
+
+          x:{
+            show: true,
+            label: {
+              text: 'Month',
+              position: 'outer-center'
+            }
+          }
+        }
+    });
+  </script>
+</html>
