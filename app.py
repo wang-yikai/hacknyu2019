@@ -33,26 +33,24 @@ def to_datetime(d):
         ).strftime('%m/%d %H:%M:%S')
 
 def logon(user, password):
-    db = connect(f)
-    c = db.cursor()
 	try:
-    	query = ("SELECT * FROM users WHERE user=?")
-	except:
+		db = connect(f)
+		c = db.cursor()
+		query = ("SELECT * FROM users WHERE user=?")
+		sel = c.execute(query,(user,))
+
+	    #records with this username
+	    #so should be at most one record (in theory)
+		for record in sel:
+			password = sha1(password.encode('utf-8')).hexdigest()
+			if (password==record[1]):
+				return "" #no error message because it will be rerouted to mainpage
+			else:
+				return "Invalid password"#error message
 		db.close()
+		return "User does not exist"#error message
+	except:
 		return "Users non-existent!"
-    sel = c.execute(query,(user,));
-
-    #records with this username
-    #so should be at most one record (in theory)
-
-    for record in sel:
-        password = sha1(password.encode('utf-8')).hexdigest()
-        if (password==record[1]):
-            return "" #no error message because it will be rerouted to mainpage
-        else:
-            return "Invalid password"#error message
-    db.close()
-    return "User does not exist"#error message
 
 def register(user, password):
     db = connect(f)
