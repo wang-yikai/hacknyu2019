@@ -88,9 +88,9 @@
 
              <div class="container-fluid" style="margin-top: 20%;">
              {% for item in results %}
-             <div class="well">
+             <div class="well well-lg" style = "margin-bottom: 2%;">
                <br>
-               <h4>{{ item['name'] }}</h4>
+               <h4 style="text-align: center;">{{ item['name'] }}</h4>
                <img src="{{ item['images'][0] }}" style="clear: left; float: left; width: 10%; height: 10%;">
                ${{ item['price'] }}
                <br>
