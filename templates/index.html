@@ -5,36 +5,70 @@
     <head>
         <meta charset="UTF-8">
         <title>Cop It</title>
-
+                
         <meta name = "viewport" content = "width = device - width">
-        <meta name = "description" content = "Cop It Website">
+        <meta name = "description" content = "Cop It Website">  
         <link rel = "stylesheet" href = "style.css">
-
+        
         <!--for search bar icon -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+        
         <script defer src= https://use.fontawesome.com/releases/v5.3.1/css/all.css ></script>
     </head>
+    
 
-
-    <body>
-
-
+    <body>  
+        <script>
+         function check(question){
+           if(confirm(question)){
+            window.open("login.html", "_self");
+           }
+           else{
+           }
+         }
+         </script>
+        
+        
         <!-- The sidebar -->
         <div class="sidebar">
 <!--          <section id = "NameDisplay" align = "center" style = "font-size: 1000", font color="red"><h1>Cop It</h1></section>-->
-        <img src ="Cop%20It%20Logo.png" width = 200 height = 100 alt = "CPP Logo" draggable="false" ondragstart="return false;" onContextMenu="return false;">
-
-          <a class="active" href="index.html" style = "font-family: Helvetica">Search</a>
-          <a href="item1.html" style = "font-family: Helvetica">Watch List</a>
-          <a href="item2.html" style = "font-family: Helvetica">Statistics</a>
-          <a href="index.html" style = "font-family: Helvetica">Log Out</a>
+        <img src ="img/Cop%20It%20Logo.png" width = 300px height = 150px  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+            
+          <a class="active" href="index.html" style = "font-family: Helvetica; font-size:20px;">Search</a>
+          <button class="collapsible" style = "font-family: Helvetica; font-size:20px;">Watch List</button>
+            <div class="collapse-content">
+              <a href="item1.html">1. Apple Air Pods<img id="hov" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item2.html">2. iPad Pro (6th gen)<img id="hov1" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item3.html">3. Surface Pro (5th gen)<img id="hov2" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item4.html">4. Canon EOS 5D Mark II<img id="hov3" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item5.html">5. iPhone 6S<img id="hov4" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+            </div>
+          <a href="#statistics.html" style = "font-family: Helvetica; font-size:20px;">Statistics</a>
+          <a style = "font-family: Helvetica" onclick="check('Are you sure you want to log out?');">Log Out</a>
         </div>
 
+        
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                  content.style.display = "none";
+                } else {
+                  content.style.display = "block";
+                }
+              });
+            }
+        </script>
+        
         <!-- Page content -->
         <div class="content">
-
-          <h1>Welcome, Kenny!</h1>
+            
+          <h1>Hi, Kenny!</h1>
 <!--
             <div class = "searchbarbox">
               <input type="text" style = "font-family: Didot" placeholder="search ...">
@@ -44,29 +78,29 @@
               <button type="submit"><i class="fa fa-search"></i></button>
             </div>
 -->
-
+            
             <div class="search-bar-box">
-
+                
                 <form>
                       <input type="text" class="search-bar-txt" placeholder= "Search..."/>
                 <a class="search-bar-button">
                     <i class="fas fa-search"></i>
-                </a>
-
+                </a>          
+                
                 </form>
 
              </div>
-
+            
         </div>
+        
+        
 
     </body>
 
     <foot>
-        <div class = "copyright">
+        <div class = "copyright" style="background-color:ghostwhite;">
             <p>Copyright &copy; 2019 Cop It</p>
         </div>
     </foot>
-
-
 
 </html>

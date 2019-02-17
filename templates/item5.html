@@ -1,161 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <style>
-     table{
-       margin-left: 200px;
-     }
-     a{
-       font-family: "Times New Roman", Times, serif;
-     }
-     th{
-       width: 1px;
-       text-align: right;
-     }
-     td{
-       width: 1px;
-     }
+<!DOCTYPE HTML>
 
-     #tab{
-       margin-left:200px;
-       width: 1000px;
-     }
-     h1{
-       position: relative;
-       text-align: center;
-     }
+<html>
 
-     #img1{
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-     }
-     #ad1{
-       float: right;
-       width: 350px;
-       height: 200px;
-       position: absolute;
-       left: 1150px;
-       top: 500px;
-     }
-     .sidenav {
-       margin-top: 52px;
-       color: black;
-       height: 100%;
-       width: 300px;
-       position: absolute;
-       z-index: 1;
-       top: 0;
-       left: 0;
-       background-color: lightcoral;
-       overflow-x: hidden;
-       padding-top: 100px;
-    }
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        color: black;
-        display: block;
-    }
-    .sidenav a:hover {
-        background-color: #FF6347;
-        opacity:0.5;
-        color: black;
-        text-decoration: none;
-    }
-    #head{
-      position: relative;
-      margin-left: 0;
-      text-align: center;
-    }
-    .topnav-right, #loger {
-       float: right;
-       text-align: right;
-    }
-    #hov, #hov1 , #hov2, #hov3, #hov4{
-      width: 30px;
-      height: 30px;
-      position: relative;
-      float:right;
-    }
-    li{
-      margin: 0 0 0 0;
-      font-size: 20px;
-    }
-    #chart{
-      display: block;
-      margin-left: 450px;
-      margin-top: auto;
-      position: relative;
-    }
-    </style>
-    <!-- Bootstrap CSS -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Cop It</title>
+                
+        <meta name = "viewport" content = "width = device - width">
+        <meta name = "description" content = "Cop It Website">  
+        <link rel = "stylesheet" href = "style.css">
+        
+        <!--for search bar icon -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        
+        <script defer src= https://use.fontawesome.com/releases/v5.3.1/css/all.css ></script>
+        
+        <style>
+        
+            table{
+               margin-left: -200px;
+               color: black;
+             }
+             a{
+               font-family: "Helvetica", Times, serif;
+             }
+             th{
+               width: 1px;
+               text-align: right;
+             }
+             td{
+               width: 1px;
+             }
+             #tab{
+               margin-left:200px;
+               width: 1000px;
+             }
+            
+            #chart{
+              display: block;
+              margin-left: 450px;
+              margin-top: auto;
+              position: relative;
+            }
+        </style>
+        
+        <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <!-- Load c3.css -->
-<link href="c3f/c3.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- Load c3.css -->
+        
+    </head>
+    
 
-<!-- Load d3.js and c3.js -->
-<script src="c3f/d3.min.js" charset="utf-8"></script>
-<script src="c3f/c3.min.js"></script>
-    <title>Copiat</title>
-    <script>
+    <body>  
+        <script>
+         function check(question){
+           if(confirm(question)){
+            window.open("login.html", "_self");
+           }
+           else{
+           }
+         }
+         </script>
+        <!-- The sidebar -->
+        <div class="sidebar">
+<!--          <section id = "NameDisplay" align = "center" style = "font-size: 1000", font color="red"><h1>Cop It</h1></section>-->
+        <img src ="img/Cop%20It%20Logo.png" width = 300px height = 150px  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+                     
+          <a class="active" href="index.html" style = "font-family: Helvetica; font-size:20px;">Search</a>
+          <button class="collapsible" style = "font-family: Helvetica; font-size:20px;">Watch List</button>
+            <div class="collapse-content">
+              <a href="item1.html">1. Apple Air Pods<img id="hov" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item2.html">2. iPad Pro (6th gen)<img id="hov1" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item3.html">3. Surface Pro (5th gen)<img id="hov2" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item4.html">4. Canon EOS 5D Mark II<img id="hov3" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              <a href="item5.html">5. iPhone 6S<img id="hov4" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+            </div>
+          <a href="#statistics.html" style = "font-family: Helvetica; font-size:20px;">Statistics</a>
+          <a style = "font-family: Helvetica; font-size:20px;" onclick="check('Are you sure you want to log out?');">Log Out</a>
+        </div>
+        
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
 
-    </script>
-  </head>
-  <body>
-
-  <nav class="navbar navbar-inverse" id="head">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Copiad</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-    </ul>
-      <div class="topnav-right">
-        <ul class="nava navbar-nav">
-               <li><a id ="loger" onclick="window.open('check.html','popup','width=500,height=250,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600*(screen.width)/2,top=300*(screen.height)/2');">Log out</a></li>
-        </ul>
-      </div>
-  </div>
-</nav>
-<div class="sidenav" id="side">
-</div>
-   <div class="sidenav">
-
-     <script>
-     function check(question){
-       if(confirm(question)){
-
-       }
-       else{
-       }
-     }
-     </script>
-      <h1>𝒲𝒶𝓉𝒸𝒽𝓁𝒾𝓈𝓉</h1>
-      <a href="item1.html">1. Airpods <img id="hov" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item2.html">2. Air Jordan<img id="hov1" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 2?');"></a>
-      <a href="item3.html">3. Netflix<img id="hov2" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 3?');"></a>
-      <a href="item4.html">4. Google Home Mini<img id="hov3" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 4?');"></a>
-      <a href="item5.html">5. Gucci Bag<img id="hov4" src="img/delete.jpg" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 5?');"></a>
-      <br>
-      <br>
-      <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-   </div>
-
-    <h1>Gucci Bag</h1>
-
-  <div id = "tab">
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                  content.style.display = "none";
+                } else {
+                  content.style.display = "block";
+                }
+              });
+            }
+        </script>
+        
+        <!-- Page content -->
+        <div class="content">
+            
+          <h1>Apple Air Pods</h1>
+<!--
+            <div class = "searchbarbox">
+              <input type="text" style = "font-family: Didot" placeholder="search ...">
+              <a class = "searchbuttonbox">
+                <i class="far fa-search"></i>
+              </a>
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+-->
+            
+ <div id = "tab">
     <table class="table">
       <thead>
-         <tr style = "background-color: lightgray">
+         <tr style = "background-color: lightcoral">
             <th class="col-sm-0.1"></th>
             <th class="col-sm-0.1">Time</th>
             <th class="col-sm-0.1">Price drop</th>
@@ -167,42 +128,44 @@
         <th scope="row"> 1.</th>
         <td>May</td>
         <td>-30%</td>
-        <td>Ebay</td>
-        <td>100%</td>
+        <td>Best Buy</td>
+        <td>80%</td>
       </tr>
       <tr>
         <th scope="row"> 2.</th>
-        <td>April</td>
-        <td>-30%</td>
-        <td>Amazon</td>
-        <td>10%</td>
+        <td>June</td>
+        <td>-40%</td>
+        <td>Costco</td>
+        <td>40%</td>
       </tr>
       <tr>
         <th scope="row"> 3.</th>
-        <td>July</td>
-        <td>-60%</td>
-        <td>WoodBury</td>
-        <td>5%</td>
+        <td>August</td>
+        <td>-56%</td>
+        <td>Walmart</td>
+        <td>30%</td>
       </tr>
       <tr>
         <th scope="row"> 4.</th>
         <td>April</td>
-        <td>-45%</td>
+        <td>-35%</td>
         <td>Aliexpress</td>
-        <td>3%</td>
+        <td>15%</td>
       </tr>
       <tr>
         <th scope="row"> 5.</th>
         <td>May</td>
         <td>-50%</td>
-        <td>New Egg</td>
-        <td>1%</td>
+        <td>Ebay</td>
+        <td>5%</td>
       </tr>
     </table>
   </div>
-    <!--<img src="img/airpod.jpg" alt= "airpods" id ="img1">-->
-    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">
-  <div id="chart"></div>
+
+  <div id="chart">
+  
+  </div>
+      
   <script>
     var chart = c3.generate({
        bindto: '#chart',
@@ -212,8 +175,8 @@
         },
         data: {
            columns: [
-             ['2018', 800, 800, 800, 700, 800, 800, 800, 800, 800, 800, 800, 700, 700],
-             ['2019', 700, 700, 700, 600]
+             ['2018', 30, 45, 50, 45, 53, 40, 42, 45, 64, 25, 20, 40, 45],
+             ['2019', 20, 30, 40, 30]
            ]
         },
         axis: {
@@ -224,7 +187,6 @@
               position: 'outer-middle'
             }
           },
-
           x:{
             show: true,
             label: {
@@ -234,5 +196,18 @@
           }
         }
     });
-  </script>
+    </script>
+            
+    </div>
+        
+        
+
+    </body>
+
+    <foot>
+        <div class = "copyright" style="background-color:ghostwhite;">
+            <p>Copyright &copy; 2019 Cop It</p>
+        </div>
+    </foot>
+
 </html>
