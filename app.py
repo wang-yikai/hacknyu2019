@@ -170,7 +170,7 @@ def trend_median(price_history):
 	for i in range(1, len(price_history)):
 		# print(i)
 		j = 0
-		while j < len(curr_intervals):
+		while j < len(curr_intervals) and len(curr_prices) > 0:
 			# |------|
 					  # |---------|
 			# |-------|
