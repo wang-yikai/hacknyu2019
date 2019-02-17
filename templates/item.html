@@ -64,7 +64,7 @@
         color: black;
         text-decoration: none;
     }
-        
+
     #head{
       position: relative;
       margin-left: 0;
@@ -97,12 +97,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <!-- Load c3.css -->
-      
+
 <link href="c3f/c3.css" rel="stylesheet">
 
 <!-- Load d3.js and c3.js -->
-<script src="c3f/d3.min.js" charset="utf-8"></script>
-<script src="c3f/c3.min.js"></script>
+<script src="{{ url_for('static', filename='c3f/d3.min.js') }}" charset="utf-8"></script>
+<script src="{{ url_for('static', filename='c3f/c3.min.js') }}"></script>
     <title>Copiat</title>
     <script>
     </script>
@@ -112,11 +112,11 @@
   <nav class="navbar navbar-inverse" id="head">
       <div class="container-fluid" >
         <div class="navbar-header" >
-          <a class="navbar-brand" href="index.html">       
-              <img src = Cop%20It%20Logo.png style="width: 200px; height: 100px; overflow:hidden;">
+          <a class="navbar-brand" href="index.html">
+              <img src ="{{ url_for('static', filename='img/Cop It Logo.png') }}" style="width: 200px; height: 100px; overflow:hidden;">
           </a>
         </div>
-          
+
         <ul class="nav navbar-nav">
           <li><a href="index.html">Home</a>   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -130,85 +130,47 @@
           </div>
       </div>
 </nav>
-<div class="sidenav" id="side">
+<!-- The sidebar -->
+<div class="sidebar">
+<!--          <section id = "NameDisplay" align = "center" style = "font-size: 1000", font color="red"><h1>Cop It</h1></section>-->
+<img src ="{{ url_for('static', filename='img/Cop It Logo.png') }}" width = 300px height = 150px  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+
+  <a class="active" href="/home/" style = "font-family: Helvetica; font-size:20px;">Search</a>
+  <button class="collapsible" style = "font-family: Helvetica; font-size:20px;">Watch List</button>
+    <div class="collapse-content">
+      {% for item in watchlist %}
+      <a href="/{{ item }}/">{{ item }}<a href="/delete/{{ item }}/"><button type="button" class="btn btn-danger" style="float: right; width: 25px; height: 25px;">Delete</button></a></a>
+      {% endfor %}
+    </div>
+  <a style = "font-family: Helvetica" a href="/logout/">Log Out</a>
 </div>
-   <div class="sidenav">
 
-     <script>
-     function check(question){
-       if(confirm(question)){
-       }
-       else{
-       }
-     }
-     </script>
-       
-<!--      <h1>𝒲𝒶𝓉𝒸𝒽𝓁𝒾𝓈𝓉</h1>-->
-      <h1>Watch List</h1>
-      <a href="item.html">1. Airpods <img id="hov" src="Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');">x</a>
-      <a href="item.html">2. Yeezys<img id="hov1" src="Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">3. Disney Tickets<img id="hov2" src="Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">4. Supreme Hoodie<img id="hov3" src="Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <a href="item.html">5. iPhone<img id="hov4" src="Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');"></a>
-      <br>
-      <br>
-      <div class="tenor-gif-embed" data-postid="5254036" data-share-method="host" data-width="100%" data-aspect-ratio="2.066390041493776"><a href="https://tenor.com/view/shopping-own-the-world-flawless-gif-5254036">Shopping Own GIF</a> from <a href="https://tenor.com/search/shopping-gifs">Shopping GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-   </div>
-
-    <h1>Airpods</h1>
+    <h1>{{ product }}</h1>
 
   <div id = "tab">
     <table class="table">
       <thead>
          <tr style = "background-color: lightgray">
             <th class="col-sm-0.1"></th>
-            <th class="col-sm-0.1">Time</th>
-            <th class="col-sm-0.1">Price drop</th>
-            <th class="col-sm-0.1">Store</th>
             <th class="col-sm-0.1">Drop Chance</th>
+            <th class="col-sm-0.1">Price drop</th>
+            <th class="col-sm-0.1">Time</th>
          </tr>
       </thead>
+
+      {% for row in prob %}
+
       <tr>
-        <th scope="row"> 1.</th>
-        <td>May</td>
-        <td>-30%</td>
-        <td>Best Buy</td>
-        <td>80%</td>
+        <td>{{ row[0] }}%</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
       </tr>
-      <tr>
-        <th scope="row"> 2.</th>
-        <td>June</td>
-        <td>-40%</td>
-        <td>Costco</td>
-        <td>40%</td>
-      </tr>
-      <tr>
-        <th scope="row"> 3.</th>
-        <td>August</td>
-        <td>-56%</td>
-        <td>Walmart</td>
-        <td>30%</td>
-      </tr>
-      <tr>
-        <th scope="row"> 4.</th>
-        <td>April</td>
-        <td>-35%</td>
-        <td>Aliexpress</td>
-        <td>15%</td>
-      </tr>
-      <tr>
-        <th scope="row"> 5.</th>
-        <td>May</td>
-        <td>-50%</td>
-        <td>Ebay</td>
-        <td>5%</td>
-      </tr>
+
+      {% endfor %}
     </table>
   </div>
-    <img src="img/airpod.jpg" alt= "airpods" id ="img1">
-    <img src="img/pepsi.jpg" alt = "pepsi" id="ad1">
   <div id="chart"></div>
-      
+
   <script>
     var chart = c3.generate({
        bindto: '#chart',

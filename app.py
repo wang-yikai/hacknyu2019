@@ -264,7 +264,7 @@ def get_prob_table(trend):
 # print("9:",add_to_watchlist("bob", "iPhone"))
 # print("end:",remove_from_watchlist("bob", "iPhone"))
 # print("10:",get_watchlist("bob"))
-app = Flask(__name__)
+
 @app.route('/')
 def homepage():
 	if 'username' in session:
@@ -283,7 +283,7 @@ def logged_on():
 	if username:
 		session['username'] = username
 	if 'username' in session:
-		return render_template("index.html")
+		return render_template("index.html", username = session['username'], watchlist = get_watchlist(session['username']))
 	return redirect(url_for('homepage'))
 
 @app.route("/logout/")
@@ -303,7 +303,7 @@ def authenticate():
 	return redirect(url_for('login',error=text))
 
 @app.route('/register/', methods=['POST'])
-def register():
+def reg():
 	password = request.form["password"]
 	username = request.form["username"]
 	repeat = request.form["repeat"]#login vs. register
@@ -311,10 +311,47 @@ def register():
 	if password != repeat:
 		text = "Passwords do not match!"
 	else:
-		text = len(register(username, password))
+		text = register(username, password)
 	if len(text) < 1:
 		return redirect(url_for('logged_on',username=username))
 	return redirect(url_for('homepage',error=text))
+
+@app.route('/search/', methods=['POST'])
+def search():
+	product = request.form['product']
+	sem3.products_field("search", product)
+	results = sem3.get_products()['results']
+	print(results)
+	return redirect(url_for('logged_on',results=results))
+
+@app.route('/<item>/')
+def info(item):
+	sem3.products_field("search", item)
+	sem3_id = sem3.get_products()['results'][0]["sem3_id"]
+	sem3.offers_field("sem3_id", sem3_id)
+
+	offers = sem3.get_offers()
+	price_history = []
+
+	# print(offers['results'])
+	for elem in offers['results']:
+	    price_history.append([ int(elem['firstrecorded_at']), int(elem['lastrecorded_at']), float(elem['price']) ])
+
+	price_history = sorted(price_history)
+	trends = trend_median(price_history)
+
+	# print(price_history)
+	return render_template("item.html", prob = get_prob_table(trends), watchlist = get_watchlist(session['username']), product = item)
+
+@app.route('/delete/<item>/')
+def delete(item):
+	remove_from_watchlist(session['username'], item)
+	return redirect(url_for("logged_on"))
+
+@app.route('/add/<item>/')
+def add(item):
+	add_to_watchlist(session['username'], item)
+	return redirect(url_for("logged_on"))
 
 if __name__ == '__main__':
     app.debug = True

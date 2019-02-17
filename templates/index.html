@@ -5,19 +5,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Cop It</title>
-                
-        <meta name = "viewport" content = "width = device - width">
-        <meta name = "description" content = "Cop It Website">  
-        <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
-        
-        <!--for search bar icon -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        
-        <script defer src= https://use.fontawesome.com/releases/v5.3.1/css/all.css ></script>
-    </head>
-    
 
-    <body>  
+        <meta name = "viewport" content = "width = device - width">
+        <meta name = "description" content = "Cop It Website">
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script defer src= https://use.fontawesome.com/releases/v5.3.1/css/all.css ></script>
+
+                <!--for search bar icon -->
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    </head>
+
+
+    <body>
         <script>
          function check(question){
            if(confirm(question)){
@@ -27,27 +28,24 @@
            }
          }
          </script>
-        
-        
+
+
         <!-- The sidebar -->
         <div class="sidebar">
 <!--          <section id = "NameDisplay" align = "center" style = "font-size: 1000", font color="red"><h1>Cop It</h1></section>-->
-        <img src ="img/Cop%20It%20Logo.png" width = 300px height = 150px  draggable="false" ondragstart="return false;" onContextMenu="return false;">
-            
+        <img src ="{{ url_for('static', filename='img/Cop It Logo.png') }}" width = 300px height = 150px  draggable="false" ondragstart="return false;" onContextMenu="return false;">
+
           <a class="active" href="/home/" style = "font-family: Helvetica; font-size:20px;">Search</a>
           <button class="collapsible" style = "font-family: Helvetica; font-size:20px;">Watch List</button>
             <div class="collapse-content">
-              <a href="item1.html">1. Apple Air Pods<img id="hov" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
-              <a href="item2.html">2. iPad Pro (6th gen)<img id="hov1" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
-              <a href="item3.html">3. Surface Pro (5th gen)<img id="hov2" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
-              <a href="item4.html">4. Canon EOS 5D Mark II<img id="hov3" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
-              <a href="item5.html">5. iPhone 6S<img id="hov4" src="img/Delete Icon.png" width = "25" height = "25" alt="Delete" onclick="check('Are you sure you want to delete item 1?');" style="float:right;"></a>
+              {% for item in watchlist %}
+              <a href="/{{ item }}/">{{ item }}<a href="/delete/{{ item }}/"><button type="button" class="btn btn-danger" style="float: right; width: 25px; height: 25px;">Delete</button></a></a>
+              {% endfor %}
             </div>
-          <a href="#statistics.html" style = "font-family: Helvetica; font-size:20px;">Statistics</a>
-          <a style = "font-family: Helvetica" onclick="check('Are you sure you want to log out?');">Log Out</a>
+          <a style = "font-family: Helvetica" a href="/logout/">Log Out</a>
         </div>
 
-        
+
         <script>
             var coll = document.getElementsByClassName("collapsible");
             var i;
@@ -64,11 +62,11 @@
               });
             }
         </script>
-        
+
         <!-- Page content -->
         <div class="content">
-            
-          <h1>Hi, Kenny!</h1>
+
+          <h1>Hi, {{ username }}!</h1>
 <!--
             <div class = "searchbarbox">
               <input type="text" style = "font-family: Didot" placeholder="search ...">
@@ -78,22 +76,29 @@
               <button type="submit"><i class="fa fa-search"></i></button>
             </div>
 -->
-            
+
             <div class="search-bar-box">
-                
-                <form>
-                      <input type="text" class="search-bar-txt" placeholder= "Search..."/>
-                <a class="search-bar-button">
-                    <i class="fas fa-search"></i>
-                </a>          
-                
+
+                <form action='/search/' method = "post">
+                      <input type="text" class="search-bar-txt" name="product" placeholder= "Search..."/>
+
                 </form>
 
              </div>
-            
+
+             {% for item in results %}
+             <div class="well"><h3>{{ item['name'] }}</h3>
+               <img src="{{ item['images'][0] }}" style="clear: left; float: left; width: 10%; height: 10%;">
+               ${{ item['price'] }}
+               <br>
+               {{ item['brand'] }}
+               <br>
+               <a href="/add/{{ item['name'] }}/"<button type="button" class="btn" style="float: right; width: 25px; height: 25px;">Add</button></a>
+             </div>
+             {% endfor %}
         </div>
-        
-        
+
+
 
     </body>
 
