@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import json
 import datetime
-import random
 from copy import deepcopy
 from sqlite3 import connect
 from hashlib import sha1
@@ -30,7 +29,7 @@ def insert_interval(l, interval):
 def to_datetime(d):
     return datetime.datetime.fromtimestamp(
             int(d)
-        ).strftime('%Y-%m-%d %H:%M:%S')
+        ).strftime('%m/%d %H:%M:%S')
 
 def login(user, password):
     db = connect(f)
@@ -216,7 +215,7 @@ def get_prob_table(trend):
 			j = 0
 			while j < len(semi_tr):
 				if (semi_tr[j][0] <= trend[i][0] or semi_tr[j][1] >= trend[i][0]) and (semi_tr[j][-1] >= 0):
-					probs.append([ int(100 * ((semi_tr[j][-1]/3) + random.random() * percent_diff)), int(price - trend[i][-1] + semi_tr[j][-1]), trend[i][0], trend[i][1]])
+					probs.append([ int(100 * ((semi_tr[j][-1]/4 + percent_diff)/2 + abs(semi_tr[j][-1]/4 - percent_diff) ** 2)), int(price - trend[i][-1] + semi_tr[j][-1]), to_datetime(trend[i][0]), to_datetime(trend[i][1])])
 					j = len(semi_tr)
 				j += 1
 			price = trend[i][-1]
