@@ -11,6 +11,10 @@ sem3 = Products(
 	api_secret = "YmVkZGQ1YWY1NTQxOThlZTE5Y2FlMDU1Nzc2MTlmMDQ"
 )
 f = "data/database.db"
+
+
+
+
 app = Flask(__name__)
 
 @app.route('/')
