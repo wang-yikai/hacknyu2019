@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import json
 import datetime
+import random
 from copy import deepcopy
 from sqlite3 import connect
 from hashlib import sha1
@@ -203,8 +204,28 @@ def trend_median(price_history):
 	trend.append([ last_start, curr_intervals[0][1], get_median(curr_prices) ])
 	return sorted(trend)
 
-
-
+def get_prob_table(trend):
+	semi_tr = [
+		[1483228800, 1485907200, 0.1], [1485907200, 1488326400, 0], [1488326400, 1491004800, -0.3], [1491004800, 1493596800, 0.1],
+		[1493596800, 1496275200, 0.1], [1496275200, 1498867200, 0.8], [1498867200, 1501545600, 0.2], [1501545600, 1504224000, 0.4],
+		[1504224000, 1506816000, 0], [1506816000, 1509494400, 0], [1509494400, 1512086400, 0], [1512086400, 1514764800, -0.1],
+		[1514764800, 1517443200, -0.2], [1517443200, 1519862400, 0], [1519862400, 1522540800, -0.1], [1522540800, 1525132800, 0.2],
+		[1525132800, 1527811200, 0], [1527811200, 1530403200, 0.3], [1530403200, 1533081600, 0.4], [1533081600, 1535760000, -0.4],
+		[1535760000, 1538352000, 1.6], [1538352000, 1541030400, -0.9], [1541030400, 1543622400, 0.1], [1543622400, 1546300800, 1.5]
+	]
+	probs = []
+	price = trend[0][-1]
+	for i in range(1, len(trend)):
+		if price - trend[i][-1] >= (0.1 * price):
+			percent_diff = (price - trend[i][-1])/price
+			j = 0
+			while j < len(semi_tr):
+				if (semi_tr[j][0] <= trend[i][0] or semi_tr[j][1] >= trend[i][0]) and (semi_tr[j][-1] >= 0):
+					probs.append([ int(100 * ((semi_tr[j][-1]/3) + random.random() * percent_diff)), int(price - trend[i][-1] + semi_tr[j][-1]), trend[i][0], trend[i][1]])
+					j = len(semi_tr)
+				j += 1
+			price = trend[i][-1]
+	return probs
 
 sem3.offers_field("sem3_id", "7JAykYaFyiYscEmcAwYC64")
 
@@ -229,7 +250,11 @@ print(price_history)
 #     print("name:", elem['name'], "sem3_id:", elem['sem3_id'])
 
 print("_____TREND____")
-print(trend_median(price_history))
+trends = trend_median(price_history)
+print(trends)
+
+print("____PROBS____")
+print(get_prob_table(trends))
 
 # print("1:",register("bob", "thebuilder"))
 # print("2:",login("bob", "thebuilder"))
